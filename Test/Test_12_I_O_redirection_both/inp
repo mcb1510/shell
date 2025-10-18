@@ -1,0 +1,4 @@
+cat < Test/Test_12_I_O_redirection_both/in2.txt > Test/Test_12_I_O_redirection_both/out2.txt
+cat Test/Test_12_I_O_redirection_both/out2.txt
+rm Test/Test_12_I_O_redirection_both/out2.txt
+exit

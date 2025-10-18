@@ -1,0 +1,8 @@
+echo "first" > file1.txt &
+echo "second" > file2.txt &
+echo "foreground"
+sleep 1
+cat file1.txt
+cat file2.txt
+rm file1.txt file2.txt
+exit 

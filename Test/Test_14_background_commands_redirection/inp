@@ -1,0 +1,6 @@
+echo "background output" > bg_out.txt &
+echo "foreground"
+sleep 1
+cat bg_out.txt
+rm bg_out.txt
+exit

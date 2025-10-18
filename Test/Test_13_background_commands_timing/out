@@ -1,0 +1,6 @@
+"Test 1: Foreground (should take 2 seconds total)"
+"Done with foreground"
+""
+"Test 2: Background (should be instant)"
+"Done with background - it did not wait"
+"After waiting for background to finish"

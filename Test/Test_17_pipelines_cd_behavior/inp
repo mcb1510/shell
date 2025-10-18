@@ -1,0 +1,8 @@
+pwd
+cd /etc ; pwd
+pwd
+cd /home/MIGUELCARRASCOBE/cs452-hw3
+pwd
+cd /etc | pwd
+pwd
+exit

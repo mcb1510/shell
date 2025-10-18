@@ -1,0 +1,3 @@
+echo hello world > out1.txt
+cat out1.txt
+exit

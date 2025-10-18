@@ -1,0 +1,15 @@
+sleep 100 &
+jobs
+fg 1
+jobs
+bg 1
+jobs
+exit
+pwd
+echo hi | wc
+exit
+pwd
+exit
+echo hi
+( cd /etc ; pwd ) ; pwd
+exit

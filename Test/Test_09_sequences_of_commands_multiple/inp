@@ -1,0 +1,3 @@
+pwd ; echo test
+echo hello ; echo world
+exit 

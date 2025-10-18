@@ -1,0 +1,12 @@
+echo "Test 1: Foreground (should take 2 seconds total)"
+sleep 1
+sleep 1
+echo "Done with foreground"
+echo ""
+echo "Test 2: Background (should be instant)"
+sleep 1 & 
+sleep 1 &
+echo "Done with background - it did not wait"
+sleep 3
+echo "After waiting for background to finish"
+exit 

@@ -1,0 +1,2 @@
+cat < Test/Test_11_I_O_redirection_input/in1.txt
+exit
