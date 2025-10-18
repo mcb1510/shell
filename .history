@@ -13,3 +13,33 @@ exit
 echo hi
 ( cd /etc ; pwd ) ; pwd
 exit
+sleep 2 &
+jobs
+jobs
+echo $$
+sleep 1 &
+sleep 2 &
+sleep 3 &
+ps aux | grep $USER | grep defunct
+top
+ps -eo pid,ppid,state,cmd | grep Z
+ps -eo pid,ppid,state,cmd | grep miguelc
+exit
+sleep 3 $
+sleep  &
+exit
+sleep 3 &
+ps -eo pid,ppid,state,cmd | grep Z
+sleep 3 &
+jobs
+jobs
+exit
+pwd
+exit
+{ ( cd /etc ; pwd ) ; pwd } | cat
+exit
+{ { cd /etc ; pwd } ; pwd } | cat
+./shell < Test/Test_21_nested_compound/inp
+./shell < Test/Test_21_nested_compound/inp
+exir
+exit

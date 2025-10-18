@@ -71,6 +71,7 @@ static void execute(Pipeline pipeline, Jobs jobs, int *jobbed, int *eof) {
 
     if (pids[i] == 0) {
       // Child - restore signals
+      setpgid(0, 0);  // ADD THIS LINE - create new process group
       signal(SIGTSTP, SIG_DFL);
       signal(SIGINT, SIG_DFL);
       
@@ -82,6 +83,9 @@ static void execute(Pipeline pipeline, Jobs jobs, int *jobbed, int *eof) {
 
       execCommand(cmd, pipeline, jobs, jobbed, eof, r->fg, pipe_in, pipe_out);
       exit(0);
+    }
+    else {
+      setpgid(pids[i], pids[0]);  // Set all children to the same process group
     }
   }
 

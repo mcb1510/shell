@@ -4,7 +4,6 @@ Command.d
 Command.h
 Command.o
 deq.c
-deq copy.h
 deq.d
 deq.h
 deq.o

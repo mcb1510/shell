@@ -5,15 +5,22 @@
 #include <termios.h>
 #include <readline/readline.h>
 #include <readline/history.h>
-
+#include <sys/wait.h>
 #include "Jobs.h"
 #include "Parser.h"
 #include "Interpreter.h"
 #include "error.h"
 
+//clean up finished background jobs
+void sigchld_handler(int sig) {
+  while (waitpid(-1, NULL, WNOHANG) > 0);
+}
+
+
 void setup_signals() {
   signal(SIGTSTP, SIG_IGN);  // Shell ignores ^Z
   signal(SIGINT, SIG_IGN);   // Shell ignores ^C
+  signal(SIGCHLD, sigchld_handler);  // clean up zombies processes
 }
 
 int main() {

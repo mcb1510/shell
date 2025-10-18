@@ -17,6 +17,9 @@ typedef struct {
 
 static int next_job_id = 1; // To assign unique job IDs
 
+// free job declaration
+static void freeJob(Job job);
+
 // Create a new empty Jobs collection
 extern Jobs newJobs() {
   //Deque to store jobs
@@ -63,38 +66,78 @@ extern void setJobPids(Jobs jobs, pid_t *pids, int num_pids){
   job->num_pids = num_pids;
 }
 
-// Print the list of jobs with their statuses
+// Replace the printJobs function with this version:
+
 extern void printJobs(Jobs jobs) {
-  // We go over all jobs and print their details
-  for (int i = 0; i < deq_len(jobs); i++) {
-    Job job = deq_head_ith(jobs,i); // Get the job at index i
-    // If the job has no PIDs, we print a message and continue
-    if (job->pids == NULL){
+  int i = 0;
+  while (i < deq_len(jobs)) {
+    Job job = deq_head_ith(jobs, i);
+    
+    if (job->pids == NULL) {
       printf("[%d] Running (no PIDs)\n", job->job_id);
+      i++;
       continue;
     }
     
-    // We check the status of each PID
-    int still_running = 0; // Flag to check if any process is still running
+    // Check if all processes are done
+    int all_done = 1;
     for (int j = 0; j < job->num_pids; j++) {
-      int status; // we store the status of the process
-      // We use WNOHANG to avoid blocking if the process is still running
+      int status;
       pid_t result = waitpid(job->pids[j], &status, WNOHANG);
-      if (result == 0) { //if the process is still running
-        still_running = 1; // we set the flag
+      if (result == 0) {  // Still running
+        all_done = 0;
         break;
       }
     }
-    // We print the job status
-    if (still_running) {
+    
+    if (all_done) {
+      // Remove finished job
+      deq_head_rem(jobs, job);
+      freeJob(job);
+      // Don't increment i - we removed an element
+    } else {
+      // Print status
       if (job->stopped) {
         printf("[%d] Stopped\n", job->job_id);
       } else {
         printf("[%d] Running\n", job->job_id);
       }
+      i++;
     }
   }
 }
+// // Print the list of jobs with their statuses
+// extern void printJobs(Jobs jobs) {
+//   // We go over all jobs and print their details
+//   for (int i = 0; i < deq_len(jobs); i++) {
+//     Job job = deq_head_ith(jobs,i); // Get the job at index i
+//     // If the job has no PIDs, we print a message and continue
+//     if (job->pids == NULL){
+//       printf("[%d] Running (no PIDs)\n", job->job_id);
+//       continue;
+//     }
+    
+//     // We check the status of each PID
+//     int still_running = 0; // Flag to check if any process is still running
+//     for (int j = 0; j < job->num_pids; j++) {
+//       int status; // we store the status of the process
+//       // We use WNOHANG to avoid blocking if the process is still running
+//       pid_t result = waitpid(job->pids[j], &status, WNOHANG);
+//       if (result == 0) { //if the process is still running
+//         still_running = 1; // we set the flag
+//         break;
+//       }
+//     }
+//     // We print the job status
+//     if (still_running) {
+//       if (job->stopped) {
+//         printf("[%d] Stopped\n", job->job_id);
+//       } else {
+//         printf("[%d] Running\n", job->job_id);
+//       }
+//     }
+//   }
+// }
 
 // Bring a job to the foreground
 extern void foregroundJob(Jobs jobs, int job_id) {
@@ -168,7 +211,7 @@ extern void markJobStopped(Jobs jobs) {
 }
 
 // Free the Jobs collection and all its Pipelines
-extern void freeJob(Job job) {
+static void freeJob(Job job) {
   if (job->pids) // we free the PIDs array if it exists
     free(job->pids);
   freePipeline(job->pipeline); // we free the associated pipeline

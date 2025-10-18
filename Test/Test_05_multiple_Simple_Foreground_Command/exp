@@ -1,11 +1,11 @@
 /home/MIGUELCARRASCOBE/cs452-hw3
 test
+# Code Citations.md
 Command.c
 Command.d
 Command.h
 Command.o
 deq.c
-deq copy.h
 deq.d
 deq.h
 deq.o
@@ -21,7 +21,6 @@ Jobs.c
 Jobs.d
 Jobs.h
 Jobs.o
-libdeq.so
 out1.txt
 output.txt
 Parser.c
