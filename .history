@@ -43,3 +43,38 @@ exit
 ./shell < Test/Test_21_nested_compound/inp
 exir
 exit
+jobs
+history
+sleep 100 &
+jobs
+fg 1
+jobs
+bg 1
+jobs
+exit
+pwd
+exit
+sleep 10 &
+sleep 20 &
+jobs
+jobs
+sleep 100 &
+jobs
+fg 3
+jobs
+bg 3
+jobs 
+exit
+sleep 100 
+jobs
+fg 1
+jobs
+sleep 10
+jobs
+fg 2
+jobs
+sleep 30 
+jobs
+fg 3
+jobs
+exit

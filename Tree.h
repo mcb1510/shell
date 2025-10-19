@@ -1,4 +1,9 @@
-// defines the data structures for the parse commands.
+/*
+ * File: tree.h
+ * Description: Header file for the parse tree data structures.
+ * Author(s): Jim Buffenbarger
+ * Date: 10/18/25 
+ */
 #ifndef TREE_H
 #define TREE_H
 
@@ -41,10 +46,15 @@ struct T_word {
   char *s;
 };
 
+// Create a new sequence
 extern T_sequence new_sequence();
+// Create a new pipeline
 extern T_pipeline new_pipeline();
+// Create a new command
 extern T_command  new_command();
+// Create a new words list
 extern T_words    new_words();
+// Create a new word
 extern T_word     new_word();
 
 #endif

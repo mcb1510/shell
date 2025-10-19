@@ -49,5 +49,6 @@ Tree.c
 Tree.d
 Tree.h
 Tree.o
+valgrind_results.txt
 vg
 last

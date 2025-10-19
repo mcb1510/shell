@@ -1,4 +1,11 @@
-#ifndef JOBS_H
+/* 
+ * File: jobs.h
+ * Description: Header file for managing job control
+ * Author(s): Jim Buffenbarger - Miguel Carrasco
+ * Date: 10/18/25 
+ */
+
+ #ifndef JOBS_H
 #define JOBS_H
 
 typedef void *Jobs;

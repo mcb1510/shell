@@ -1,0 +1,35 @@
+[miguelcarrascobe@onyx cs452-hw3]$ ./shell
+$ sleep 10 &
+$ sleep 20 &
+$ jobs
+[1] Running
+[2] Running
+$ jobs
+$ sleep 100 &
+$ jobs
+[3] Running
+$ fg 3
+^Z
+$ jobs
+[3] Stopped
+$ bg 3
+$ jobs 
+[3] Running
+$ exit
+
+another test
+$ sleep 30 
+^Z
+$ jobs
+[1] Stopped
+[3] Stopped
+$ fg 3
+$ jobs
+[1] Stopped
+$ 
+=============================================================================
+RESULTS:
+jobs command: Shows all background jobs with status
+bg: Successfully resumed stopped job in background
+fg: Successfully brought background job to foreground and resume stopped job in foreground
+Job state tracking: Correctly tracks Running/Stopped states
