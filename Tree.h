@@ -1,6 +1,6 @@
 /*
  * File: tree.h
- * Description: Header file for the parse tree data structures.
+ * Description: Header file for the parse tree data structures
  * Author(s): Jim Buffenbarger
  * Date: 10/18/25 
  */

@@ -1,4 +1,3 @@
-# Code Citations.md
 Command.c
 Command.d
 Command.h
@@ -29,6 +28,7 @@ Pipeline.c
 Pipeline.d
 Pipeline.h
 Pipeline.o
+README.md
 rl.supp
 Scanner.c
 Scanner.d
@@ -43,6 +43,7 @@ Shell.c
 Shell.d
 Shell.o
 Test
+test_output.txt
 test.txt
 Tree.c
 Tree.d
