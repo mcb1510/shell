@@ -65,3 +65,8 @@ make
 
 ## To test
 test/run
+
+## Resources
+-Starter code provided by Professor Jim Buffenbarger.
+-GitHub Copilot
+-Chat GPT5
